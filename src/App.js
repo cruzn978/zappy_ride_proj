@@ -1,10 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+import "./App.css";
+import Form from './Form'
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <Form/>
+    </div>
+  );
+}
+
+export default App;
+
+
+  /* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -17,9 +27,9 @@ function App() {
         >
           Learn React
         </a>
-      </header>
-    </div>
-  );
-}
 
-export default App;
+        <Col md={8} style={{backgroundColor: 'orange',}}>md=8</Col>
+          <Col style={{backgroundColor: 'yellow',}}>??</Col>
+
+      </header> */
+
