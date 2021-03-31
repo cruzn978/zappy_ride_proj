@@ -11,7 +11,7 @@ const Results = (props) => {
   let rateSuggestion = currentRateCost > otherRateCost ? true : false
   let otherRate = (rate === "A") ? "B" : "A"
   return (
-    <div className="center">
+    <div className="center end-row">
       <p>Your Current Rate: {currentRateCost}</p>
       {rateSuggestion && <p>Rate {otherRate}: {otherRateCost}</p>}
       <button type="submit" value="Submit" class="btn btn-outline-primary btn-pill" onClick={handleReset}>Start Over</button>

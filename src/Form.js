@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Form } from "react-bootstrap/";
+import { Container, Row, Col, Form, FormControl } from "react-bootstrap/";
 
 const makeOptions = (opts) => {
   for (let i = 0; i < opts.length; i++) {
@@ -29,17 +29,21 @@ const EVBillForm = (props) => {
           </Col>
         </Row>
         <Row>
-          <Col className="center end-row">
-            <select
-              name="rate"
-              id="rate"
-              value={props.rate}
-              onChange={props.handleChange}
-            >
-              <option value="">--Select rate--</option>
-              <option value="A">Rate A</option>
-              <option value="B">Rate B</option>
-            </select>
+          <Col className="center end-row" >
+            <Form.Group controlId="exampleForm.ControlSelect1">
+              <Form.Control
+                required
+                as="select"
+                name="rate"
+                id="rate"
+                value={props.rate}
+                onChange={props.handleChange}
+              >
+                <option value="">Select rate</option>
+                <option value="A">Rate A</option>
+                <option value="B">Rate B</option>
+              </Form.Control>
+            </Form.Group>
           </Col>
         </Row>
         <Row>
@@ -51,7 +55,7 @@ const EVBillForm = (props) => {
         </Row>
         <Row>
           <Col className="center end-row">
-            <input
+            <FormControl
               type="number"
               id="miles"
               name="miles"
@@ -69,33 +73,41 @@ const EVBillForm = (props) => {
           </Col>
         </Row>
         <Row>
-          <Col className="center end-row">
-            <select
-              name="startTime"
-              id="startTime"
-              value={props.startTime}
-              onChange={props.handleChange}
-            >
-              <option value="">--Choose a start time--</option>
-              {options.map((option) => (
-                <option value={option.val}>{option.time}</option>
-              ))}
-            </select>
-            <select
-              name="endTime"
-              id="endTime"
-              value={props.endTime}
-              onChange={props.handleChange}
-            >
-              <option value="">--Choose an end time--</option>
-              {options.map((option) => (
-                <option value={option.val}>{option.time}</option>
-              ))}
-            </select>
+          <Col className="center">
+            <Form.Group controlId="exampleForm.ControlSelect1">
+              <Form.Control
+                required
+                as="select"
+                name="startTime"
+                id="startTime"
+                value={props.startTime}
+                onChange={props.handleChange}
+              >
+                <option value="">Choose an start time</option>
+                {options.map((option) => (
+                  <option value={option.val}>{option.time}</option>
+                ))}
+              </Form.Control>
+            </Form.Group>
+            <Form.Group controlId="exampleForm.ControlSelect1">
+              <Form.Control
+                required
+                as="select"
+                name="endTime"
+                id="endTime"
+                value={props.endTime}
+                onChange={props.handleChange}
+              >
+                <option value="">Choose an end time</option>
+                {options.map((option) => (
+                  <option value={option.val}>{option.time}</option>
+                ))}
+              </Form.Control>
+            </Form.Group>
           </Col>
         </Row>
         <Row>
-          <Col className="center">
+          <Col className="center end-row">
             <button
               type="submit"
               value="Submit"

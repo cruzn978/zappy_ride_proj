@@ -18,9 +18,14 @@ body {
 h1 {
   padding-top: 40px;
   padding-bottom: 20px;
-
+}
+.container {
+  max-width: 450px;
 }
 
+.input {
+  max-width: 300px;
+}
 /* .App {
   text-align: center;
 }
