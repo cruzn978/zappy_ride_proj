@@ -4,6 +4,8 @@ import "./App.css";
 import Form from './Form'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
+import Results from './Results';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -11,8 +13,9 @@ class App extends React.Component {
     this.state = {
       rate: "",
       miles: 0,
-      startTime: 0,
-      endTime: 0,
+      startTime: "",
+      endTime: "",
+      submitted: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,17 +30,23 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.setState({
-      rate: "",
-      miles: 0,
-      startTime: 0,
-      endTime: 0,
+    //   rate: "",
+    //   miles: 0,
+    //   startTime: "",
+    //   endTime: "",
+      submitted: true
     });
     console.log("submitted state", this.state);
   }
   render() {
     return (
       <Container>
-        <Form {...this.state} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+        <Form
+          {...this.state}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+        {this.state.submitted && <Results {...this.state}/>}
       </Container>
     );
   }

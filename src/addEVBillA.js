@@ -25,6 +25,5 @@ function calcEVBillA (miles, start, end) {
   const dailyCost = costPerDay(kWhDay, start, end)
   return (dailyCost * 365).toFixed(2)
 }
-console.log(calcEVBillA(3000, 20, 23))
 
 module.exports = calcEVBillA
