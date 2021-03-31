@@ -11,19 +11,25 @@ export default class NameForm extends React.Component {
       endTime: 0,
     };
 
-    // this.handleChange = this.handleChange.bind(this);
-    // this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // handleChange(event) {
-  //   this.setState({ value: event.target.value });
-  // }
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value });
+    console.log(this.state);
+  }
 
-  // handleSubmit(event) {
-  //   alert("A name was submitted: " + this.state.value);
-  //   event.preventDefault();
-  // }
-
+  handleSubmit(event) {
+    event.preventDefault();
+    this.setState({
+      rate: "",
+      miles: 0,
+      startTime: 0,
+      endTime: 0,
+    });
+    console.log("submitted state", this.state);
+  }
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
@@ -33,33 +39,42 @@ export default class NameForm extends React.Component {
           </Row>
           <Row>
             <Col>
-              <label for="cars">Choose a rate:</label>
+              <label htmlFor="rate">Choose a rate:</label>
               <select
                 name="rate"
                 id="rate"
-                value={this.state.value}
+                value={this.state.rate}
                 onChange={this.handleChange}
               >
-                <option value="rate a">Rate A</option>
-                <option value="rate b">Rate B</option>
+                <option value="">--Select rate--</option>
+                <option value="A">Rate A</option>
+                <option value="B">Rate B</option>
               </select>
             </Col>
           </Row>
           <Row>
             <Col>
-              <label for="miles">Miles driven yearly:</label>
-              <input type="number" id="miles" name="miles" min="1" />
+              <label htmlFor="miles">Miles driven yearly:</label>
+              <input
+                type="number"
+                id="miles"
+                name="miles"
+                min="1"
+                value={this.state.miles}
+                onChange={this.handleChange}
+              />
             </Col>
           </Row>
           <Row>
             <Col>
-              <label for="startTime">Charging times:</label>
+              <label htmlFor="startTime">Charging times:</label>
               <select
                 name="startTime"
                 id="startTime"
                 value={this.state.value}
                 onChange={this.handleChange}
               >
+                <option value="">--Please choose a start time--</option>
                 <option value="12:00 AM">12:00 AM</option>
                 <option value="1:00 AM">1:00 AM</option>
                 <option value="2:00 AM">2:00 AM</option>
@@ -91,6 +106,7 @@ export default class NameForm extends React.Component {
                 value={this.state.value}
                 onChange={this.handleChange}
               >
+                <option value="">--Please choose an end time--</option>
                 <option value="12:00 AM">12:00 AM</option>
                 <option value="1:00 AM">1:00 AM</option>
                 <option value="2:00 AM">2:00 AM</option>
@@ -118,7 +134,6 @@ export default class NameForm extends React.Component {
               </select>
             </Col>
           </Row>
-
           <Row>
             <Col>
               <input type="submit" value="Submit" />
