@@ -14,6 +14,7 @@ const Results = (props) => {
     <div className="center end-row">
       <p>Your Current Rate: {currentRateCost}</p>
       {rateSuggestion && <p>Rate {otherRate}: {otherRateCost}</p>}
+      {!rateSuggestion && <p>Congrats! Your current rate is the most cost efficient.</p>}
       <button type="submit" value="Submit" class="btn btn-outline-primary btn-pill" onClick={handleReset}>Start Over</button>
     </div>
   );
