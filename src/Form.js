@@ -11,6 +11,10 @@ const Form = (props) => {
         <Row>
           <Col>
             <label htmlFor="rate">Choose a rate:</label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
             <select
               name="rate"
               id="rate"
@@ -26,6 +30,10 @@ const Form = (props) => {
         <Row>
           <Col>
             <label htmlFor="miles">Miles driven yearly:</label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
             <input
               type="number"
               id="miles"
@@ -39,6 +47,10 @@ const Form = (props) => {
         <Row>
           <Col>
             <label htmlFor="startTime">Charging times:</label>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
             <select
               name="startTime"
               id="startTime"

@@ -3,50 +3,53 @@ import React from 'react'
 import "./App.css";
 import Form from './Form'
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Results from './Results';
 
-
+const defaultState = {
+  rate: "",
+  miles: 0,
+  startTime: "",
+  endTime: "",
+  submitted: false
+}
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      rate: "",
-      miles: 0,
-      startTime: "",
-      endTime: "",
-      submitted: false
-    };
+    this.state = defaultState
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleReset = this.handleReset.bind(this);
+
   }
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value });
-    console.log(this.state);
   }
 
   handleSubmit(event) {
     event.preventDefault();
     this.setState({
-    //   rate: "",
-    //   miles: 0,
-    //   startTime: "",
-    //   endTime: "",
       submitted: true
     });
-    console.log("submitted state", this.state);
+  }
+
+  handleReset(event) {
+    event.preventDefault();
+    this.setState(defaultState);
   }
   render() {
     return (
       <Container>
-        <Form
-          {...this.state}
-          handleChange={this.handleChange}
-          handleSubmit={this.handleSubmit}
-        />
-        {this.state.submitted && <Results {...this.state}/>}
+            <Form
+              {...this.state}
+              handleChange={this.handleChange}
+              handleSubmit={this.handleSubmit}
+            />
+            {this.state.submitted && (
+              <Results {...this.state} handleReset={this.handleReset} />
+            )}
       </Container>
     );
   }
