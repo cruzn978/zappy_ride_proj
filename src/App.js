@@ -1,10 +1,9 @@
 // import logo from './logo.svg';
 import React from 'react'
-import "./App.css";
-import Form from './Form'
-import "bootstrap/dist/css/bootstrap.min.css";
+import EVBillForm from './Form'
 import { Container, Row, Col } from "react-bootstrap";
 import Results from './Results';
+import "./App.css";
 
 const defaultState = {
   rate: "",
@@ -42,14 +41,17 @@ class App extends React.Component {
   render() {
     return (
       <Container>
-            <Form
-              {...this.state}
-              handleChange={this.handleChange}
-              handleSubmit={this.handleSubmit}
-            />
-            {this.state.submitted && (
-              <Results {...this.state} handleReset={this.handleReset} />
-            )}
+        <Row>
+          <Col className="center"><h1>EV bill cost</h1></Col>
+        </Row>
+        <EVBillForm
+          {...this.state}
+          handleChange={this.handleChange}
+          handleSubmit={this.handleSubmit}
+        />
+        {this.state.submitted && (
+          <Results {...this.state} handleReset={this.handleReset} />
+        )}
       </Container>
     );
   }

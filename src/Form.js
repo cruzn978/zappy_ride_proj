@@ -1,20 +1,35 @@
 import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap/";
+import { Container, Row, Col, Form } from "react-bootstrap/";
 
-const Form = (props) => {
+const makeOptions = (opts) => {
+  for (let i = 0; i < opts.length; i++) {
+    const amOrPm = i > 11 ? "PM" : "AM";
+    let hour = "";
+    if (!i) hour = "12";
+    else if (i > 12) hour = (i - 12).toString();
+    else hour = i.toString();
+    const time = `${hour}:00 ${amOrPm}`;
+    console.log("time results:", time, hour);
+    opts[i] = { val: i.toString(), time: time };
+  }
+  return opts;
+};
+
+const options = makeOptions(Array(24));
+
+const EVBillForm = (props) => {
   return (
-    <form onSubmit={props.handleSubmit}>
+    <Form onSubmit={props.handleSubmit}>
       <Container>
         <Row>
-          <Col>EV bill cost</Col>
-        </Row>
-        <Row>
-          <Col>
-            <label htmlFor="rate">Choose a rate:</label>
+          <Col className="center">
+            <label htmlFor="rate">
+              <h3>Choose a rate:</h3>
+            </label>
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col className="center end-row">
             <select
               name="rate"
               id="rate"
@@ -28,12 +43,14 @@ const Form = (props) => {
           </Col>
         </Row>
         <Row>
-          <Col>
-            <label htmlFor="miles">Miles driven yearly:</label>
+          <Col className="center">
+            <label htmlFor="miles">
+              <h3>Miles driven yearly:</h3>
+            </label>
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col className="center end-row">
             <input
               type="number"
               id="miles"
@@ -45,85 +62,51 @@ const Form = (props) => {
           </Col>
         </Row>
         <Row>
-          <Col>
-            <label htmlFor="startTime">Charging times:</label>
+          <Col className="center">
+            <label htmlFor="startTime">
+              <h3>Charging times:</h3>
+            </label>
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col className="center end-row">
             <select
               name="startTime"
               id="startTime"
-              value={props.value}
+              value={props.startTime}
               onChange={props.handleChange}
             >
-              <option value="">--Please choose a start time--</option>
-              <option value="0">12:00 AM</option>
-              <option value="1">1:00 AM</option>
-              <option value="2">2:00 AM</option>
-              <option value="3">3:00 AM</option>
-              <option value="4">4:00 AM</option>
-              <option value="5">5:00 AM</option>
-              <option value="6">6:00 AM</option>
-              <option value="7">7:00 AM</option>
-              <option value="8">8:00 AM</option>
-              <option value="9">9:00 AM</option>
-              <option value="10">10:00 AM</option>
-              <option value="11">11:00 AM</option>
-              <option value="12">12:00 PM</option>
-              <option value="13">1:00 PM</option>
-              <option value="14">2:00 PM</option>
-              <option value="15">3:00 PM</option>
-              <option value="16">4:00 PM</option>
-              <option value="17">5:00 PM</option>
-              <option value="18">6:00 PM</option>
-              <option value="19">7:00 PM</option>
-              <option value="20">8:00 PM</option>
-              <option value="21">9:00 PM</option>
-              <option value="22">10:00 PM</option>
-              <option value="23">11:00 PM</option>
+              <option value="">--Choose a start time--</option>
+              {options.map((option) => (
+                <option value={option.val}>{option.time}</option>
+              ))}
             </select>
             <select
               name="endTime"
               id="endTime"
-              value={props.value}
+              value={props.endTime}
               onChange={props.handleChange}
             >
-              <option value="">--Please choose an end time--</option>
-              <option value="0">12:00 AM</option>
-              <option value="1">1:00 AM</option>
-              <option value="2">2:00 AM</option>
-              <option value="3">3:00 AM</option>
-              <option value="4">4:00 AM</option>
-              <option value="5">5:00 AM</option>
-              <option value="6">6:00 AM</option>
-              <option value="7">7:00 AM</option>
-              <option value="8">8:00 AM</option>
-              <option value="9">9:00 AM</option>
-              <option value="10">10:00 AM</option>
-              <option value="11">11:00 AM</option>
-              <option value="12">12:00 PM</option>
-              <option value="13">1:00 PM</option>
-              <option value="14">2:00 PM</option>
-              <option value="15">3:00 PM</option>
-              <option value="16">4:00 PM</option>
-              <option value="17">5:00 PM</option>
-              <option value="18">6:00 PM</option>
-              <option value="19">7:00 PM</option>
-              <option value="20">8:00 PM</option>
-              <option value="21">9:00 PM</option>
-              <option value="22">10:00 PM</option>
-              <option value="23">11:00 PM</option>
+              <option value="">--Choose an end time--</option>
+              {options.map((option) => (
+                <option value={option.val}>{option.time}</option>
+              ))}
             </select>
           </Col>
         </Row>
         <Row>
-          <Col>
-            <input type="submit" value="Submit" />
+          <Col className="center">
+            <button
+              type="submit"
+              value="Submit"
+              class="btn btn-outline-success btn-pill"
+            >
+              Submit
+            </button>
           </Col>
         </Row>
       </Container>
-    </form>
+    </Form>
   );
 };
-export default Form
+export default EVBillForm;

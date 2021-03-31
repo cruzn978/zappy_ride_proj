@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, Row, Col, Button } from "react-bootstrap/";
 import calcEVBillA from './addEVBillA'
 import calcEVBillB from './addEVBillB'
 
@@ -12,10 +11,10 @@ const Results = (props) => {
   let rateSuggestion = currentRateCost > otherRateCost ? true : false
   let otherRate = (rate === "A") ? "B" : "A"
   return (
-    <div>
+    <div className="center">
       <p>Your Current Rate: {currentRateCost}</p>
       {rateSuggestion && <p>Rate {otherRate}: {otherRateCost}</p>}
-      <button onClick={handleReset}>Start Over</button>
+      <button type="submit" value="Submit" class="btn btn-outline-primary btn-pill" onClick={handleReset}>Start Over</button>
     </div>
   );
 };

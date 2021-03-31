@@ -23,27 +23,8 @@ function calcEVBillB (miles, start, end) {
   // divide by 365 days
 
   const kWhDay = miles * 3 / 10 / 365
-  const dailyCost = costPerDay(kWhDay, start, end)
-  const costPerYear = dailyCost * 365
+  const dailyChargingCost = costPerDay(kWhDay, start, end)
+  const costPerYear = dailyChargingCost * 365
   return costPerYear.toFixed(2)
 }
 module.exports = calcEVBillB
-// mock time slots: use 24 hour time
-// all noon-6pm (peak hours)
-// 12:00 - 181:00
-// 13:00 - 17:00
-// 14:00 - 15:00
-
-// all 6pm-12pm (off peak hours only within a day)
-// 18:00 - 23:00
-// 18:00 - 00:00
-// 00:00 - 12:00
-
-// cont. with overnight charging? maybe calculate how peak/off peak hours!
-// 18:00 - 12:00 = 18 hrs off peak
-// 17:00 - 5:00
-// 23:00 - 11:00
-
-// combinations
-// 12:00 - 19:00 (12-7pm: 1 hr overlap with off peak at the end)
-// 17:00 - 5:00(5pm-5am: 1hr overlap peak followed by 11 hours off peak overnight)

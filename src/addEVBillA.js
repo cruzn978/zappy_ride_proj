@@ -15,15 +15,11 @@ function costPerDay(kWhDay, start, end) {
 }
 
 function calcEVBillA (miles, start, end) {
-  // Find how many hours a day they charge the EV
-  let hours = 0
-  end > start ? hours = end - start : hours = (24 - (start - end))
-  // Find the kWh/day
   // take the mi/yr * 0.3 kWh/mile = kWh per year
   // divide by 365 days
   const kWhDay = miles * 3 / 10 / 365 //~2.4657/day
-  const dailyCost = costPerDay(kWhDay, start, end)
-  return (dailyCost * 365).toFixed(2)
+  const dailyChargingCost = costPerDay(kWhDay, start, end)
+  return (dailyChargingCost * 365).toFixed(2)
 }
-
+calcEVBillA(3000, 0, 3)
 module.exports = calcEVBillA
