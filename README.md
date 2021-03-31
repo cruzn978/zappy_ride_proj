@@ -1,6 +1,6 @@
 # Zappy Ride Project
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and deployed [here](https://****HEROKU LINK****).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and deployed [here](https://zappy-proj.herokuapp.com/).
 
 ## About
 This is an application that will calculate the total yearly cost of charging an Electric Vehicle based on a rate, miles driven a year and charging times.
